@@ -17,27 +17,26 @@ for (i = 0; i < lingoWordChooser.length; i++){
 
 
 //De functie start als je op "CHECK" klikt
-
 check.onclick = function(){
 	//Checkt en splitst het 5 letter woord die de gebruiker heeft geraden
 	var wordInput = document.getElementById("wordInput");
-	var ownWordChooser = wordInput.value.split('');
+	var ownWordChooserSplitter = wordInput.value.split('');
 
 
 	//Als het geraden woord even lang is als het lingo woord mag de gebruiker verder
-	if(ownWordChooser.length == lingoWordChooser.length){
+	if(ownWordChooserSplitter.length == lingoWordChooser.length){
 		//Maakt een nieuwe rij met de lettters
-		for (i = 0; i < ownWordChooser.length; i++){
+		for (i = 0; i < ownWordChooserSplitter.length; i++){
 			var letters = document.createElement("button");
 			wordshowerbox.appendChild(letters);
-			letters.innerHTML = ownWordChooser[i-1+1]
+			letters.innerHTML = ownWordChooserSplitter[i-1+1]
 
 			//Als de letter van het geraden woord overeenkomt met de letter van het lingo woord 
-			if(lingoWordChooserSplitter[i] == ownWordChooser[i]){
-				letters.style.backgroundColor = "red"
+			if(lingoWordChooserSplitter[i] == ownWordChooserSplitter[i]){
+				letters.style.backgroundColor = "green"
 			}
 			//Als de letter van het geraden woord niet op de juiste plek zit van het lingo woord 
-			else if(lingoWordChooserSplitter.indexOf(ownWordChooser[i]) > -1){
+			else if(lingoWordChooserSplitter.indexOf(ownWordChooserSplitter[i]) > -1){
 				letters.style.backgroundColor = "yellow"
 				letters.style.borderRadius = "50%";
 			}	
