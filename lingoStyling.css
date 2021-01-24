@@ -3,38 +3,41 @@ body{
 	margin: 0%;
 	background-color: grey;
 }
+
 /* De grootte van de buttons(Waar de letters van het woord in staan) */
 button{
 	margin: 0px 2px;
 	padding: 45px;
 }
 
-/* Het div element waar je jou woord/letter moet invullen */
+/* Label voor "Raad het woord" */
+label{
+	font-size: 25px;
+	margin-left: -150px;
+	margin-right: 134.4px;
+}
+
+/* Het div element voor de inputs */
 .inputcheckerbox{
 	padding: 150px;
 	background-color: yellow;
 }
 
-/* Het div element waar het antwoord wordt ingevuld */
+/* De button "Check" */
+#check{
+	padding: 10px 20px;
+	margin: 50px 11.8%;
+	position: absolute;
+}
+
+/* Het div element waar het woord wordt ingevuld */
 #wordshowerbox{
 	padding: 100px;
 	background-color: white;
 }
 
-/* De grote van de div elements */
+/* De grootte van de div elementen */
 .inputcheckerbox, #wordshowerbox{
 	margin: 0% 25%;
 }
 
-/* Label voor "Raad het woord" */
-label{
-	font-size: 25px;
-	margin-left: -150px;
-	margin-right: 140px;
-}
-/* De button "Check" */
-#check{
-	padding: 10px 20px;
-	margin: 50px 12%;
-	position: absolute;
-}
