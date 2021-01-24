@@ -1,6 +1,7 @@
 //Pakt een random lingo woord uit de array
 var lingoWord = Math.floor(Math.random() * words.length);
-var lingoWordChooser = words[lingoWord];
+//var lingoWordChooser = words[lingoWord];
+var lingoWordChooser = "water";
 var lingoWordChooserSplitter = lingoWordChooser.split('');
 
 
@@ -22,14 +23,15 @@ check.onclick = function(){
 	var wordInput = document.getElementById("wordInput");
 	var ownWordChooserSplitter = wordInput.value.split('');
 
-
+	
 	//Als het geraden woord even lang is als het lingo woord mag de gebruiker verder
 	if(ownWordChooserSplitter.length == lingoWordChooser.length){
 		//Maakt een nieuwe rij met de lettters
 		for (i = 0; i < ownWordChooserSplitter.length; i++){
+			//Maakt een nieuwe rij met de lettters
 			var letters = document.createElement("button");
 			wordshowerbox.appendChild(letters);
-			letters.innerHTML = ownWordChooserSplitter[i-1+1]
+			letters.innerHTML = ownWordChooserSplitter[i]
 
 			//Als de letter van het geraden woord overeenkomt met de letter van het lingo woord 
 			if(lingoWordChooserSplitter[i] == ownWordChooserSplitter[i]){
@@ -39,11 +41,8 @@ check.onclick = function(){
 			else if(lingoWordChooserSplitter.indexOf(ownWordChooserSplitter[i]) > -1){
 				letters.style.backgroundColor = "yellow"
 				letters.style.borderRadius = "50%";
-			}	
+			}
 		}
 	}
 }
 console.log(lingoWordChooserSplitter)
-
-
-
