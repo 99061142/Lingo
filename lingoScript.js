@@ -27,7 +27,7 @@ check.onclick = function(){
 	//Als het geraden woord even lang is als het lingo woord mag de gebruiker verder
 	if(guessedWordSplit.length == lingoWordSplit.length){
 		//Maakt een nieuwe rij met de lettters
-		for (i = 0; i < guessedWordSplit.length; i++){
+		for(i = 0; i < guessedWordSplit.length; i++){
 			//Maakt een rij voor de letters met het geraden woord
 			var buttonLetters = document.createElement("button");
 			whiteDiv.appendChild(buttonLetters);
