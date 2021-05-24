@@ -2,7 +2,7 @@
 
 Dutch:
 
-Dit was een school om Javascript te leren.
+Dit was een schoolopdracht om Javascript te leren.
 
 
 Hoe speel je het spel?
@@ -19,7 +19,7 @@ De gebruiker heeft maximaal 5 kansen om het woord te raden.
 
 English:
 
-This was a school assignment to learn Javascript
+This was a school project to learn Javascript
 
 
 How do you play the game?
