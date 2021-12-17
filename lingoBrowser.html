@@ -3,17 +3,17 @@
 	<head>
 		<title>Lingo</title>
  		<link rel="stylesheet" href="lingoStyling.css">
- 		<script src="lingo-nl.js"></script>
+ 		<script src="lingo-nl.js"></script> <!-- Random words  -->
+ 		<script src="lingoScript.js" defer></script>
  	</head>
 	<body>
 		<div id='gameboard'>
 			<div class="yellowDiv">
-				<label class="letterLabel" for="wordInput">Raad het woord: </label>
-				<input type="text" id="wordInput">
+				<label class="letterLabel" for="guessed_word">Raad het woord: </label>
+				<input type="text" id="guessed_word">
 				<input id="check" type="submit" value="CHECK">
 			</div>
 			<div id="whiteDiv"></div>
 		</div>
-		<script src="lingoScript.js"></script>
 	</body>
 </html>
