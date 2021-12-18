@@ -4,6 +4,8 @@ var word = words[random].split('');
 
 var chances = 0;
 
+document.getElementById('guessed_word').placeholder = `Kies een woord met ${word.length} letters`; // Show the user what he must answer
+
 
 // Show the user the letters he guessed correctly / are in the word the user need to guess
 function check_word(guessed_word = null){
@@ -57,11 +59,10 @@ function check_word(guessed_word = null){
             correctly_guessed = true;
         }
         word = words[random].split(''); // Reset the word
-
+        
         return correctly_guessed; // Return if the word is correctly guessed
     }
 }
-console.log(word)
 check_word();
 
 
@@ -85,13 +86,6 @@ function word_validation(guessed_word){
     }
 
     return validation;
-}
-
-
-// Error message if the word is not a valid option
-function error_message(){
-    document.getElementById('guessed_word').value = ''; // Delete the input of the user
-    document.getElementById('guessed_word').placeholder = `Kies een woord met ${word.length} letters`; // Show the reason
 }
 
 
@@ -122,6 +116,8 @@ check.onclick = function(){
     const guessed_word = document.getElementById('guessed_word').value.split(''); // Guessed word
 
 	const validation = word_validation(guessed_word); // Check if the guessed word is an option
+    
+    document.getElementById('guessed_word').value = ''; // Delete the input of the user
 
     // If its a valid option
     if(validation){
@@ -132,10 +128,5 @@ check.onclick = function(){
         if(correctly_guessed || chances == 5){
             end_screen(correctly_guessed);
         }
-    }
-    
-    // If its not a valid option
-    else{
-        error_message(); // Show the error message
     }
 }
