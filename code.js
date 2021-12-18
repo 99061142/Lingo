@@ -1,16 +1,20 @@
 // Random word
 const random = Math.floor(Math.random() * words.length);
-const word = words[random].split('');
-var not_guessed_letters = word // Check which letters the user has guessed correctly
+var word = words[random].split('');
 
 
 // Show the user the letters he guessed correctly / are in the word the user need to guess
 function check_word(guessed_word = null){
     // Make a new row
+	guessed_word_box = document.createElement('div');
+	guessed_word_box.className = 'guessed_word_box'
+
+	box_div.appendChild(guessed_word_box);
+
     for(i = 0; i < word.length; i++){
         // Make a new box
         letter_box = document.createElement('button');
-        whiteDiv.appendChild(letter_box);
+        guessed_word_box.appendChild(letter_box);
 
         // When the game starts only the first letter gets shown
         if(!guessed_word && i == 0){
@@ -27,21 +31,25 @@ function check_word(guessed_word = null){
             // If the letter is in the correct position
             if(word[i] == guessed_word[i]){
                 letter_box.style.backgroundColor = "green"; // Change box styling
-                not_guessed_letters[i] = ''; // Delete the guessed position
+                word[i] = ''; // Delete the guessed position
             }
 
             // If the letter is not in the correct position but it is in the word the user must guess
-            else if(not_guessed_letters.indexOf(guessed_word[i]) > -1){
+            else if(word.indexOf(guessed_word[i]) > -1){
                 // Change box styling
                 letter_box.style.backgroundColor = 'yellow';
                 letter_box.style.borderRadius = '50%';
 
                 var correct_position = word.indexOf(guessed_word[i]); // When the letter is in another position
-                not_guessed_letters[correct_position] = ''; // Delete the position where the guessed letter is
+                word[correct_position] = ''; // Delete the position where the guessed letter is
             }
         }
     }
-    not_guessed_letters = word // Reset the letters the user need to guess
+
+    // Reset the letters if the user guessed a word
+    if(guessed_word){
+        word = words[random].split('');
+    }
 }
 check_word()
 
