@@ -1,0 +1,25 @@
+/* Center the game */
+#container{
+	margin: 0;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+
+
+/* Div for all the boxes with the letters */
+.guessed_word_box{
+	display: flex;
+}
+
+
+/* Box for the letter */
+button{  
+	padding: 20px;
+	width: 100px;
+	margin: 15px;
+	border: 2px solid black;
+}
+
