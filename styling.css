@@ -1,12 +1,11 @@
-/* Center the game */
-#container{
+/* Center the game + end text when the game is over*/
+#container, h1{
 	margin: 0;
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 }
-
 
 
 /* Div for all the boxes with the letters */
@@ -22,4 +21,3 @@ button{
 	margin: 15px;
 	border: 2px solid black;
 }
-
