@@ -55,7 +55,7 @@ function check_word(guessed_word = null){
     // Reset the letters if the user guessed a word
     if(guessed_word){
         // Check if the word is correctly guessed 
-        if(word.every( v => v === word[0])){
+        if(word.every(letter => letter === word[0])){
             correctly_guessed = true;
         }
         word = words[random].split(''); // Reset the word
@@ -73,9 +73,9 @@ function word_validation(guessed_word){
     if(guessed_word.length == word.length){
         const letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"; // Letter options
 
-        // Check if the guessed letter is an option
-        for(i = 0; i < word.length; i++){ 
-            if(!letters.includes(guessed_word[i])){
+        // Check if all the characters are letters
+        for(const letter of guessed_word){ 
+            if(!letters.includes(letter)){
                 validation = false;
             }
         }
@@ -85,7 +85,7 @@ function word_validation(guessed_word){
         validation = false;
     }
 
-    return validation;
+    return validation; // Return if every character is a letter
 }
 
 
@@ -113,7 +113,7 @@ function end_screen(correctly_guessed){
 
 // If the user clicks submit
 check.onclick = function(){
-    const guessed_word = document.getElementById('guessed_word').value.split(''); // Guessed word
+    const guessed_word = document.getElementById('guessed_word').value.toLowerCase().split(''); // Guessed word
 
 	const validation = word_validation(guessed_word); // Check if the guessed word is an option
     
