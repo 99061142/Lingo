@@ -89,6 +89,27 @@ function make_boxes(){
 }
 
 
+// Check if the user guessed the word correctly
+function check_correctly_guessed(word, guessed_word){
+    correctly_guessed = true
+    
+    // For the amount of letters inside the word 
+    for(i = 0; i < word.length; i++){
+        correct_letter = word[i] // Correct letter
+        guessed_letter = guessed_word[i] // Letter the user guessed
+
+        // If the letters are not the same
+        if(correct_letter != guessed_letter){
+            correctly_guessed = false
+            break
+        }
+    }
+
+    return correctly_guessed
+}
+
+
+
 // If the user clicks submit
 check.onclick = function(){
     const guessed_word = document.getElementById('guessed_word').value.toLowerCase().split(''); // Guessed word
@@ -98,18 +119,20 @@ check.onclick = function(){
     if(validation){
         change_letter_box_styling(guessed_word) // Change the row styling with the word the user has guessed
 
+        correctly_guessed = check_correctly_guessed(word, guessed_word)
 
+        if(!correctly_guessed){
+            tries++
+            make_boxes() // Make the new row
+            show_first_letter() // Show the first letter on the new row
+        }
 
-        tries++
-        make_boxes() // Make the new row
-        show_first_letter() // Show the first letter on the new row
-
-
-        if(tries == 5){
+        if(correctly_guessed || tries == 5){
             console.log("end")
         }
     }
 }
+
 
 // When the program starts
 make_boxes() // Make the row
