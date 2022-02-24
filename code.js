@@ -135,7 +135,6 @@ function end_screen(correctly_guessed, tries){
 }
 
 
-
 // If the user clicks submit
 check.onclick = function(){
     const guessed_word = document.getElementById('guessed_word').value.toLowerCase().split(''); // Guessed word
