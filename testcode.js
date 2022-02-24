@@ -91,21 +91,46 @@ function make_boxes(){
 
 // Check if the user guessed the word correctly
 function check_correctly_guessed(word, guessed_word){
-    correctly_guessed = true
+    var correctly_guessed = true;
     
     // For the amount of letters inside the word 
     for(i = 0; i < word.length; i++){
-        correct_letter = word[i] // Correct letter
-        guessed_letter = guessed_word[i] // Letter the user guessed
+        var correct_letter = word[i]; // Correct letter
+        var guessed_letter = guessed_word[i]; // Letter the user guessed
 
         // If the letters are not the same
         if(correct_letter != guessed_letter){
-            correctly_guessed = false
-            break
+            correctly_guessed = false;
+            break;
         }
     }
 
     return correctly_guessed
+}
+
+
+function clear_board(){
+    const container = document.getElementById("container");
+
+    while(container.firstChild){
+        container.removeChild(container.lastChild);
+    }
+}
+
+
+
+function end_screen(correctly_guessed, tries){
+    var message = correctly_guessed ? "you won the game" : "you lost the game";
+    message += ` the word was '${word.join('')}'.`;
+
+    if(correctly_guessed){
+        message += ` The tries you needed to guess the word was ${tries+1}/${word.length}`;
+    }
+
+    const end_title = document.createElement('h1');
+
+    document.getElementById("container").appendChild(end_title); 
+    end_title.innerText = message;
 }
 
 
@@ -128,12 +153,13 @@ check.onclick = function(){
         }
 
         if(correctly_guessed || tries == 5){
-            console.log("end")
+            clear_board()
+            end_screen(correctly_guessed, tries)
         }
     }
 }
 
-
+console.log(word)
 // When the program starts
 make_boxes() // Make the row
 show_first_letter() // Show the first letter
