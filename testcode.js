@@ -1,11 +1,9 @@
 // Random word
 const word_position = Math.floor(Math.random() * words.length);
 const word = words[word_position].split(''); // Word letters
-var guessed_letters = Array(word.length).fill(""); // Letters that are in the word
-
 var tries = 0; // Tries the user has done
 
-document.getElementById('guessed_word').placeholder = `Kies een woord met ${word.length} letters`; // Show the user what he must answer
+document.getElementById('guessed_word').placeholder = `${word.length} letter word`; // Show what the user must answer
 
 
 // Check if the guessed word is a valid option
@@ -34,40 +32,43 @@ function get_row_boxes(){
 
 // Change the styling of the letter boxes in the row
 function change_letter_box_styling(guessed_word){
-    const letters_in_word = [...word]; // Letters that are in the word
+    const copied_word = [...word]; // Letters that are in the word
 
-    row_boxes = get_row_boxes()
+    row_boxes = get_row_boxes() // Row boxes
 
-    // Loop through every letter in the word
-    word.forEach((correct_letter, i) => {
-        const letter_box = row_boxes[i]; // Letter box element
-        const guessed_letter = guessed_word[i]; // Letter the user guessed inside the element
+    // For the amount of letters inside the word
+    for(i=0; i < word.length; i++){
+        const guessed_letter = guessed_word[i]; // Letter the user guessed
+        const letter_box = row_boxes[i] // Letter box
+        letter_box.innerText = guessed_letter; // Add the letter to the box
 
-        // If the guessed letter is correct
-        if(correct_letter == guessed_letter){
+        // If the guessed letter is in the correct position        
+        if(copied_word[i] == guessed_letter){
             letter_box.style.backgroundColor = "green";
+            copied_word[i] = ''; // Delete the guessed position
         }
         
-        // If the guessed letter is not correct
+        // If the guessed letter is not in the correct position
         else{
-            letter_box.style.backgroundColor = (letters_in_word.includes(guessed_letter)) ? "orange" : "red";
-        }
-    
-        // If the letter is in the word (and not yet deleted)
-        if(letter_box.style.backgroundColor != "red"){
-            letters_in_word.splice(letters_in_word.indexOf(guessed_letter), 1); // Delete the letter inside the optional letters
-        }
+            letter_box.style.backgroundColor = (copied_word.includes(guessed_letter)) ? "orange" : "red";
 
-        letter_box.innerText = guessed_letter;
-    });
+            // If the guessed letter is in the wrong position
+            if(copied_word.includes(guessed_letter)){
+                letter_position = copied_word.indexOf(guessed_letter) // Position of the guessed letter
+                copied_word[letter_position] = ''; // Delete the guessed position
+            }   
+        }
+    }
 }
 
 
+// Always show the first letter inside the row
 function show_first_letter(){
-    row_boxes = get_row_boxes() // Get every letter box element inside the row
+    const first_box = document.getElementById(`row_${tries}`).firstChild; // First box inside the row
+    const starting_letter = word[0] // Starting letter of the word the user need to guess 
 
-    row_boxes[0].innerText = word[0]; // Add the first letter to the first letter box
-    row_boxes[0].style.backgroundColor = "green";
+    first_box.innerText = starting_letter; // Add the first letter to the first box inside the row
+    first_box.style.backgroundColor = "green";
 }
 
 
@@ -159,7 +160,6 @@ check.onclick = function(){
     }
 }
 
-console.log(word)
 // When the program starts
 make_boxes() // Make the row
 show_first_letter() // Show the first letter
