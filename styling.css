@@ -1,4 +1,4 @@
-/* Center the game + end text when the game is over*/
+/* All elements inside the browser */
 #container{
 	position: absolute;
 	top: 50%;
@@ -7,13 +7,13 @@
 }
 
 
-/* Div for all the boxes with the letters */
+/* Row to show the letters the user guessed */
 .row{
 	display: flex;
 }
 
 
-/* Box for the letter */
+/* Div's to show the letter the user guessed */
 .row > div{  
 	padding: 20px;
 	width: 100px;
