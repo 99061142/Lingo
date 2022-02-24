@@ -8,13 +8,13 @@
 
 
 /* Div for all the boxes with the letters */
-.guessed_word_box{
+.row{
 	display: flex;
 }
 
 
 /* Box for the letter */
-button{  
+.row > div{  
 	padding: 20px;
 	width: 100px;
 	margin: 15px;

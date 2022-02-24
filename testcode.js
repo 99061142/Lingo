@@ -1,10 +1,12 @@
 // Random word
-const random = Math.floor(Math.random() * words.length);
-var word = words[random].split('');
+const word_position = Math.floor(Math.random() * words.length);
+const word = words[word_position].split('');
+var guessed_letters = [];
 
-var chances = 0;
+var tries = 0;
 
 document.getElementById('guessed_word').placeholder = `Kies een woord met ${word.length} letters`; // Show the user what he must answer
+
 
 // Check if the guessed word is a valid option
 function word_validation(guessed_word){
@@ -22,6 +24,23 @@ function word_validation(guessed_word){
     
     return (guessed_word.length == word.length && letters_validation); // Return if every letter is a valid character
 }
+
+
+
+
+
+function make_boxes(){
+    new_row = document.createElement('div');
+    new_row.className = "row";
+    game_board.appendChild(new_row);
+
+    for(i = 1; i <= word.length; i++){
+        letter_box = document.createElement('div');
+        new_row.appendChild(letter_box);
+    }
+}
+make_boxes()
+
 
 
 // If the user clicks submit
