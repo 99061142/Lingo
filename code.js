@@ -68,24 +68,19 @@ check_word();
 
 // Check if the guessed word is a valid option
 function word_validation(guessed_word){
-    var validation = true;
+    const letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"; // Letter options
+    letters_validation = true;
 
-    if(guessed_word.length == word.length){
-        const letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"; // Letter options
-
-        // Check if all the characters are letters
-        for(const letter of guessed_word){ 
-            if(!letters.includes(letter)){
-                validation = false;
-            }
+    // Check every letter of the guessed word
+    for(const letter of guessed_word){
+        // If the letter is not a valid character
+        if(!letters.includes(letter)){
+            letters_validation = false;
+            break;
         }
     }
     
-    else{
-        validation = false;
-    }
-
-    return validation; // Return if every character is a letter
+    return (guessed_word.length == word.length && letters_validation); // Return if every letter is a valid character
 }
 
 
@@ -115,16 +110,15 @@ function end_screen(correctly_guessed){
 check.onclick = function(){
     const guessed_word = document.getElementById('guessed_word').value.toLowerCase().split(''); // Guessed word
 
-	const validation = word_validation(guessed_word); // Check if the guessed word is an option
+	const validation = word_validation(guessed_word); //
     
-    document.getElementById('guessed_word').value = ''; // Delete the input of the user
-
-    // If its a valid option
+    // 
     if(validation){
         correctly_guessed = check_word(guessed_word); // Show the correctly guessed letters
         
         chances++ // Add 1 to the chances the user made (5 max)
 
+        //
         if(correctly_guessed || chances == 5){
             end_screen(correctly_guessed);
         }

@@ -1,6 +1,5 @@
 /* Center the game + end text when the game is over*/
 #container, h1{
-	margin: 0;
 	position: absolute;
 	top: 50%;
 	left: 50%;
